@@ -15,7 +15,7 @@
 
 @using (Html.BeginForm())
 {
-    <p>
+    <p><!--envoie le contenu du textbox comme variable searchString sans l'url, utilisé par le controller-->
         Chercher par Titre/Auteur: @Html.TextBox("SearchString")
         <input type="submit" value="search" />
     </p>
@@ -24,10 +24,12 @@
 <table class="table">
     <tr>
         <th>
+            <!--Passe la valeur du ViewBag TitleSortParm à la variable sortOrder et l'envoie à la méthode Index-->
             @Html.ActionLink("Titre", "Index", new { sortOrder = ViewBag.TitleSortParm })
             <!--Html.DisplayNameFor(model => model.titre)-->
         </th>
         <th>
+            <!--Passe la valeur du ViewBag TitleAuthorSortParm à la variable sortOrder et l'envoie à la méthode Index-->
             @Html.ActionLink("Auteur", "Index", new { sortOrder = ViewBag.AuthorSortParm })
             <!--Html.DisplayNameFor(model => model.auteur)-->
         </th>

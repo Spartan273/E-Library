@@ -15,18 +15,25 @@ namespace E_Library.Controllers
         private dbBiblioEntities db = new dbBiblioEntities();
 
         // GET: /Livres/
+        // Prend en paramètre sortOrder et searchString dans l'url, envoyés par la vue (actionLink new{ sortOrder =...) et le textbox searchString}
         public ActionResult Index(string sortOrder, string searchString)
         {
+            //Si le Viewbag Title est null ou vide (sortOrder) il lui attribue title_desc (desc = descending), sinon il attribue une chaine vide
             ViewBag.TitleSortParm = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            //Viewbag Author = paramètre sortOrder. Si sortOrder == Author, viewbag.Author = author_desc, sinon, il prend Author (lorsqu'on clique une deuxième fois)
             ViewBag.AuthorSortParm = sortOrder == "Author" ? "author_desc" : "Author";
             var livres = from model in db.Livres
                          select model;
 
+
+            //barre de recherche : si paramètre searchString envoyé du textbox n'est PAS null/vide
             if(!String.IsNullOrEmpty(searchString))
             {
+                //Select les livres avec l'attribut titre OU auteur égal à searchString)
                 livres = livres.Where(model => model.titre.Contains(searchString) || model.auteur.Contains(searchString));
             }
 
+            //selon sortOrder, classe la liste select en Décroissant
             switch (sortOrder)
             {
                 case "title_desc":
