@@ -1,0 +1,65 @@
+﻿@model IEnumerable<E_Library.Models.Adresses>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Listes des adresses</h2>
+
+<p>
+    @Html.ActionLink("Nouvelle adresse", "Create") &nbsp; &nbsp; | &nbsp; &nbsp;
+    @Html.ActionLink("Liste des membres", "Index", "Membres")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.num_civique)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.app)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ville)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.code_postal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.province)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.num_civique)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.app)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ville)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.code_postal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.province)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.Id_adresse }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_adresse }) |
+            @Html.ActionLink("Effacer", "Delete", new { id=item.Id_adresse })
+        </td>
+    </tr>
+}
+
+</table>

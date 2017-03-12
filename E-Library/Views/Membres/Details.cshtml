@@ -1,0 +1,84 @@
+﻿@model E_Library.Models.Membres
+
+@{
+    ViewBag.Title = "Membre " + @Html.DisplayFor(model => model.code);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Renseignements personnels</h2>
+
+<div>
+    <h4>@Html.DisplayFor(model => model.prenom) @Html.DisplayFor(model => model.nom)</h4>
+	<hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.prenom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prenom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date_naissance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.date_naissance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sexe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sexe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.courriel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.courriel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adresses.AdresseComplete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adresses.AdresseComplete)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier", "Edit", new { id = Model.Id_membre }) |
+    @Html.ActionLink("Retour à la Liste", "Index")
+</p>

@@ -1,0 +1,59 @@
+﻿@model E_Library.Models.Livres
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Livres</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.titre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.titre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.auteur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.auteur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.editeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.editeur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.exemplaires)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.exemplaires)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.categorie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.categorie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_Livre }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

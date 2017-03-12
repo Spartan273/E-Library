@@ -1,0 +1,71 @@
+﻿@model IEnumerable<E_Library.Models.Livres>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Nouveau livre", "Create") &nbsp; &nbsp; | &nbsp; &nbsp;
+    @Html.ActionLink("Liste des membres", "Index", "Membres") &nbsp; &nbsp; | &nbsp; &nbsp;
+    @Html.ActionLink("Liste des Emprunts", "Index", "Emprunts")
+</p>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Chercher par Titre/Auteur: @Html.TextBox("SearchString")
+        <input type="submit" value="search" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("Titre", "Index", new { sortOrder = ViewBag.TitleSortParm })
+            <!--Html.DisplayNameFor(model => model.titre)-->
+        </th>
+        <th>
+            @Html.ActionLink("Auteur", "Index", new { sortOrder = ViewBag.AuthorSortParm })
+            <!--Html.DisplayNameFor(model => model.auteur)-->
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.editeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.exemplaires)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categorie)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.titre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.auteur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.editeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.exemplaires)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categorie)
+        </td>
+        <td>
+            @Html.ActionLink("Modifier", "Edit", new { id=item.Id_Livre }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_Livre }) |
+            @Html.ActionLink("Effacer", "Delete", new { id=item.Id_Livre })
+        </td>
+    </tr>
+}
+
+</table>

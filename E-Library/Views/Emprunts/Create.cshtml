@@ -1,0 +1,74 @@
+﻿@model E_Library.Models.Emprunts
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Emprunts</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_emprunt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id_emprunt)
+                @Html.ValidationMessageFor(model => model.Id_emprunt)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.date_emprunt, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.date_emprunt)
+                @Html.ValidationMessageFor(model => model.date_emprunt)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.statut, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.statut)
+                @Html.ValidationMessageFor(model => model.statut)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_membre, "Identité du membre", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Id_membre", String.Empty)
+                @Html.ValidationMessageFor(model => model.Id_membre)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id_Livre, "Titre du livre", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Id_Livre", String.Empty)
+                @Html.ValidationMessageFor(model => model.Id_Livre)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retour à la Liste", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

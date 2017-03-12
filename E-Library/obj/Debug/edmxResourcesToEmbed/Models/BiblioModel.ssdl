@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbBiblioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adresses">
+    <Key>
+      <PropertyRef Name="Id_adresse" />
+    </Key>
+    <Property Name="Id_adresse" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="num_civique" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="rue" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="app" Type="nchar" MaxLength="4" />
+    <Property Name="ville" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="code_postal" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="province" Type="nchar" MaxLength="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Emprunts">
+    <Key>
+      <PropertyRef Name="Id_emprunt" />
+    </Key>
+    <Property Name="Id_emprunt" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_emprunt" Type="date" Nullable="false" />
+    <Property Name="statut" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id_membre" Type="int" Nullable="false" />
+    <Property Name="Id_Livre" Type="int" Nullable="false" />
+    <Property Name="date_retour" Type="date" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Livres">
+    <Key>
+      <PropertyRef Name="Id_Livre" />
+    </Key>
+    <Property Name="Id_Livre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="titre" Type="nchar" MaxLength="100" Nullable="false" />
+    <Property Name="auteur" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="editeur" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="exemplaires" Type="int" Nullable="false" />
+    <Property Name="categorie" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Membres">
+    <Key>
+      <PropertyRef Name="Id_membre" />
+    </Key>
+    <Property Name="Id_membre" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="prenom" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="date_naissance" Type="date" Nullable="false" />
+    <Property Name="sexe" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="tel" Type="nchar" MaxLength="14" Nullable="false" />
+    <Property Name="courriel" Type="nchar" MaxLength="30" />
+    <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Id_adresse" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Emprunts__Id_Liv__3F466844">
+    <End Role="Livres" Type="Self.Livres" Multiplicity="1" />
+    <End Role="Emprunts" Type="Self.Emprunts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Livres">
+        <PropertyRef Name="Id_Livre" />
+      </Principal>
+      <Dependent Role="Emprunts">
+        <PropertyRef Name="Id_Livre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Emprunts__Id_mem__3A81B327">
+    <End Role="Membres" Type="Self.Membres" Multiplicity="1" />
+    <End Role="Emprunts" Type="Self.Emprunts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Membres">
+        <PropertyRef Name="Id_membre" />
+      </Principal>
+      <Dependent Role="Emprunts">
+        <PropertyRef Name="Id_membre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Membres__Id_adre__36B12243">
+    <End Role="Adresses" Type="Self.Adresses" Multiplicity="1" />
+    <End Role="Membres" Type="Self.Membres" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adresses">
+        <PropertyRef Name="Id_adresse" />
+      </Principal>
+      <Dependent Role="Membres">
+        <PropertyRef Name="Id_adresse" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbBiblioModelStoreContainer">
+    <EntitySet Name="Adresses" EntityType="Self.Adresses" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emprunts" EntityType="Self.Emprunts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Livres" EntityType="Self.Livres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Membres" EntityType="Self.Membres" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Emprunts__Id_Liv__3F466844" Association="Self.FK__Emprunts__Id_Liv__3F466844">
+      <End Role="Livres" EntitySet="Livres" />
+      <End Role="Emprunts" EntitySet="Emprunts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Emprunts__Id_mem__3A81B327" Association="Self.FK__Emprunts__Id_mem__3A81B327">
+      <End Role="Membres" EntitySet="Membres" />
+      <End Role="Emprunts" EntitySet="Emprunts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Membres__Id_adre__36B12243" Association="Self.FK__Membres__Id_adre__36B12243">
+      <End Role="Adresses" EntitySet="Adresses" />
+      <End Role="Membres" EntitySet="Membres" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

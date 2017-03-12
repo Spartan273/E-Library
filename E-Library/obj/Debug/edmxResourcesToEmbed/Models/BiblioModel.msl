@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbBiblioModelStoreContainer" CdmEntityContainer="dbBiblioEntities">
+    <EntitySetMapping Name="Adresses">
+      <EntityTypeMapping TypeName="dbBiblioModel.Adresses">
+        <MappingFragment StoreEntitySet="Adresses">
+          <ScalarProperty Name="Id_adresse" ColumnName="Id_adresse" />
+          <ScalarProperty Name="num_civique" ColumnName="num_civique" />
+          <ScalarProperty Name="rue" ColumnName="rue" />
+          <ScalarProperty Name="app" ColumnName="app" />
+          <ScalarProperty Name="ville" ColumnName="ville" />
+          <ScalarProperty Name="code_postal" ColumnName="code_postal" />
+          <ScalarProperty Name="province" ColumnName="province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Emprunts">
+      <EntityTypeMapping TypeName="dbBiblioModel.Emprunts">
+        <MappingFragment StoreEntitySet="Emprunts">
+          <ScalarProperty Name="Id_emprunt" ColumnName="Id_emprunt" />
+          <ScalarProperty Name="date_emprunt" ColumnName="date_emprunt" />
+          <ScalarProperty Name="statut" ColumnName="statut" />
+          <ScalarProperty Name="Id_membre" ColumnName="Id_membre" />
+          <ScalarProperty Name="Id_Livre" ColumnName="Id_Livre" />
+          <ScalarProperty Name="date_retour" ColumnName="date_retour" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Livres">
+      <EntityTypeMapping TypeName="dbBiblioModel.Livres">
+        <MappingFragment StoreEntitySet="Livres">
+          <ScalarProperty Name="Id_Livre" ColumnName="Id_Livre" />
+          <ScalarProperty Name="titre" ColumnName="titre" />
+          <ScalarProperty Name="auteur" ColumnName="auteur" />
+          <ScalarProperty Name="editeur" ColumnName="editeur" />
+          <ScalarProperty Name="exemplaires" ColumnName="exemplaires" />
+          <ScalarProperty Name="categorie" ColumnName="categorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Membres">
+      <EntityTypeMapping TypeName="dbBiblioModel.Membres">
+        <MappingFragment StoreEntitySet="Membres">
+          <ScalarProperty Name="Id_membre" ColumnName="Id_membre" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="date_naissance" ColumnName="date_naissance" />
+          <ScalarProperty Name="sexe" ColumnName="sexe" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="courriel" ColumnName="courriel" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="Id_adresse" ColumnName="Id_adresse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
