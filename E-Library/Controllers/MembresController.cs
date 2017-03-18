@@ -48,11 +48,13 @@ namespace E_Library.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="Id_membre,nom,prenom,date_naissance,sexe,tel,courriel,code,Id_adresse")] Membres membres)
+        public ActionResult Create([Bind(Include="Id_membre,nom,prenom,date_naissance,sexe,tel,courriel,code,Id_adresse")] Membres membres, [Bind(Include ="Id_adresse,num_civique,rue,app,ville,code_postal,province")] Adresses adresses)
         {
             if (ModelState.IsValid)
             {
+               
                 db.Membres.Add(membres);
+                db.Adresses.Add(adresses);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -82,11 +84,12 @@ namespace E_Library.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="Id_membre,nom,prenom,date_naissance,sexe,tel,courriel,code,Id_adresse")] Membres membres)
+        public ActionResult Edit([Bind(Include="Id_membre,nom,prenom,date_naissance,sexe,tel,courriel,code,Id_adresse")] Membres membres, [Bind(Include = "Id_adresse,num_civique,rue,app,ville,code_postal,province")] Adresses adresses)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(membres).State = EntityState.Modified;
+                db.Entry(adresses).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

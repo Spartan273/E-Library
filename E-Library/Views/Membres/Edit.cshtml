@@ -74,11 +74,54 @@
             </div>
         </div>
 
+
+        <!--Ajout champs adresse-->
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_adresse, "Id_adresse", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Adresses.num_civique, "Numéro", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("Id_adresse", String.Empty)
-                @Html.ValidationMessageFor(model => model.Id_adresse)
+                @Html.EditorFor(model => model.Adresses.num_civique)
+                @Html.ValidationMessageFor(model => model.Adresses.num_civique)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresses.rue, "Rue", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresses.rue)
+                @Html.ValidationMessageFor(model => model.Adresses.rue)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresses.app, "App", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresses.app)
+                @Html.ValidationMessageFor(model => model.Adresses.app)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresses.ville, "Ville", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresses.ville)
+                @Html.ValidationMessageFor(model => model.Adresses.ville)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresses.code_postal, "Code postal", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresses.code_postal)
+                @Html.ValidationMessageFor(model => model.Adresses.code_postal)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adresses.province, "Province", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Adresses.province)
+                @Html.ValidationMessageFor(model => model.Adresses.province)
             </div>
         </div>
 
