@@ -24,11 +24,24 @@ namespace E_Library.Controllers
         // GET: /Membres/Details/5
         public ActionResult Details(int? id)
         {
+
+            /*var empruntsList = (from l in db.Livres join e in db.Emprunts on l.Id_Livre equals e.Id_Livre select  new {  l, e} );
+            ViewBag.Emprunts = empruntsList.ToList();
+            ViewBag.Livres = new SelectList(db.Livres, "titre"); */
+            /* ViewBag.Emprunts = db.Emprunts.Where(m => m.Id_membre.Equals(id)); */
+
+
+            /*Retourne la liste des livres empruntés ainsi que la date d'emprunt: ComplexView se trouve dans le model BiblioModel.Context.cs  */
+            var emprunts = (from l in db.Livres join e in db.Emprunts on l.Id_Livre equals e.Id_Livre select new dbBiblioEntities.ComplexView { titre = l.titre, date_emprunt = e.date_emprunt });
+            ViewBag.Emprunts = emprunts.ToList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Membres membres = db.Membres.Find(id);
+            
+            /*Emprunts emprunts = db.Emprunts.Include(m => m.Livres); */
+
             if (membres == null)
             {
                 return HttpNotFound();

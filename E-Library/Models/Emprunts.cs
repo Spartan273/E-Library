@@ -32,4 +32,10 @@ namespace E_Library.Models
         public virtual Livres Livres { get; set; }
         public virtual Membres Membres { get; set; }
     }
+
+    public class ViewModel
+    {
+        public IEnumerable<Livres> livres { get; set; }
+        public IEnumerable<Emprunts> emprunts { get; set; }
+    }
 }

@@ -29,5 +29,13 @@ namespace E_Library.Models
         public virtual DbSet<Emprunts> Emprunts { get; set; }
         public virtual DbSet<Livres> Livres { get; set; }
         public virtual DbSet<Membres> Membres { get; set; }
+
+        public class ComplexView
+        {
+            public string titre { get; set; }
+            public DateTime date_retour { get; set; }
+            public DateTime date_emprunt { get; set; }
+
+        }
     }
 }
