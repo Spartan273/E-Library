@@ -36,6 +36,7 @@ namespace E_Library.Models
             public DateTime date_retour { get; set; }
             public DateTime date_emprunt { get; set; }
 
+
         }
     }
 }

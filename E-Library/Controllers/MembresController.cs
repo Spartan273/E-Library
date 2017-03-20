@@ -32,8 +32,9 @@ namespace E_Library.Controllers
 
 
             /*Retourne la liste des livres empruntés ainsi que la date d'emprunt: ComplexView se trouve dans le model BiblioModel.Context.cs  */
-            var emprunts = (from l in db.Livres join e in db.Emprunts on l.Id_Livre equals e.Id_Livre select new dbBiblioEntities.ComplexView { titre = l.titre, date_emprunt = e.date_emprunt });
-            ViewBag.Emprunts = emprunts.ToList();
+            var emprunts = (from l in db.Livres join e in db.Emprunts on l.Id_Livre equals e.Id_Livre select new { e, l }).ToList();
+            var empruntsList = emprunts.Select(u => new dbBiblioEntities.ComplexView { titre = u.l.titre, date_emprunt = u.e.date_emprunt, date_retour = Convert.ToDateTime(u.e.date_retour) });
+            ViewBag.Emprunts = empruntsList;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
